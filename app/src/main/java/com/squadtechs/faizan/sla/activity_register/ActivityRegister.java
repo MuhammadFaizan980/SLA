@@ -1,5 +1,6 @@
 package com.squadtechs.faizan.sla.activity_register;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squadtechs.faizan.sla.R;
+import com.squadtechs.faizan.sla.activity_main_screen.ActivityMainScreen;
 
 import java.util.HashMap;
 
@@ -62,6 +64,8 @@ public class ActivityRegister extends AppCompatActivity {
                                         progressBar.setVisibility(View.INVISIBLE);
                                         if (mTask.isSuccessful()) {
                                             Toast.makeText(ActivityRegister.this, "Registration Success", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(ActivityRegister.this, ActivityMainScreen.class));
+                                            finish();
                                         } else {
                                             Toast.makeText(ActivityRegister.this, mTask.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                         }

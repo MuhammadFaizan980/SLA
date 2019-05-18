@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.squadtechs.faizan.sla.R;
+import com.squadtechs.faizan.sla.activity_main_screen.ActivityMainScreen;
 import com.squadtechs.faizan.sla.activity_register.ActivityRegister;
 
 public class MainActivity extends AppCompatActivity {
@@ -59,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
                             progressBar.setVisibility(View.INVISIBLE);
                             if (task.isSuccessful()) {
                                 Toast.makeText(MainActivity.this, "Sign in success", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(MainActivity.this, ActivityMainScreen.class));
+                                finish();
                             } else {
                                 Toast.makeText(MainActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
