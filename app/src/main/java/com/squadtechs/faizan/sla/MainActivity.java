@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText edtEmail, edtPassword;
     private Button btnLogin, btnRegister;
+    private ProgressBar progressBar;
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -38,9 +40,11 @@ public class MainActivity extends AppCompatActivity {
                 String email = edtEmail.getText().toString().trim();
                 String password = edtPassword.getText().toString().trim();
                 if (!email.equals("") && !password.equals("")) {
+                    progressBar.setVisibility(View.VISIBLE);
                     firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
+                            progressBar.setVisibility(View.INVISIBLE);
                             if (task.isSuccessful()) {
                                 Toast.makeText(MainActivity.this, "Sign in success", Toast.LENGTH_SHORT).show();
                             } else {
@@ -49,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
                 } else {
+                    progressBar.setVisibility(View.INVISIBLE);
                     Toast.makeText(MainActivity.this, "Fill properly", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -60,6 +65,13 @@ public class MainActivity extends AppCompatActivity {
         edtPassword = findViewById(R.id.edt_password);
         btnLogin = findViewById(R.id.btn_login);
         btnRegister = findViewById(R.id.btn_register);
+        progressBar = findViewById(R.id.progress_login);
         firebaseAuth = FirebaseAuth.getInstance();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        progressBar.setVisibility(View.INVISIBLE);
     }
 }
