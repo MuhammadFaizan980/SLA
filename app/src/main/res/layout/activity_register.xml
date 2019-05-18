@@ -14,6 +14,14 @@
         android:orientation="vertical">
 
 
+        <ProgressBar
+            android:id="@+id/progress_register"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:indeterminateTint="#FFFFFF" />
+
         <ImageView
             android:layout_width="120dp"
             android:layout_height="120dp"
@@ -84,6 +92,7 @@
 
 
                         <Button
+                            android:id="@+id/btn_register"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
