@@ -1,4 +1,4 @@
-package com.squadtechs.faizan.sla;
+package com.squadtechs.faizan.sla.activity_login;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +13,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.squadtechs.faizan.sla.R;
 
 public class MainActivity extends AppCompatActivity {
 
