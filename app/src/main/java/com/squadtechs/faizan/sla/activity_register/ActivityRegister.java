@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squadtechs.faizan.sla.R;
+import com.squadtechs.faizan.sla.activity_login.ActivityLogin;
 import com.squadtechs.faizan.sla.activity_main_screen.ActivityMainScreen;
 
 import java.util.HashMap;
@@ -100,4 +101,12 @@ public class ActivityRegister extends AppCompatActivity {
         super.onStart();
         progressBar.setVisibility(View.INVISIBLE);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(ActivityRegister.this, ActivityLogin.class));
+        finish();
+    }
+
 }

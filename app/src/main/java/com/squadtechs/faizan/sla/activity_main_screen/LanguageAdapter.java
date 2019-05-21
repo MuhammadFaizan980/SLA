@@ -33,7 +33,10 @@ public class LanguageAdapter extends RecyclerView.Adapter<LanguageAdapter.Holder
         LanguageModel obj = list.get(position);
         holder.txtTitle.setText(obj.Language);
         Random random = new Random();
-        holder.colorView.setBackgroundColor(Color.parseColor("#" + random.nextInt(999999) + 100000));
+        int r = random.nextInt(255);
+        int g = random.nextInt(255);
+        int b = random.nextInt(255);
+        holder.colorView.setBackgroundColor(Color.rgb(r, g, b));
     }
 
     @Override
