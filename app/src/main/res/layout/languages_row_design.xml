@@ -10,6 +10,7 @@
         android:orientation="horizontal">
 
         <View
+            android:id="@+id/color_view"
             android:layout_width="3dp"
             android:layout_height="match_parent"
             android:background="#FC5353" />
