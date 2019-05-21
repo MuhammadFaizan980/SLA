@@ -18,7 +18,7 @@ import com.squadtechs.faizan.sla.R;
 import com.squadtechs.faizan.sla.activity_main_screen.ActivityMainScreen;
 import com.squadtechs.faizan.sla.activity_register.ActivityRegister;
 
-public class MainActivity extends AppCompatActivity {
+public class ActivityLogin extends AppCompatActivity {
 
     private EditText edtEmail, edtPassword;
     private Button btnLogin, btnRegister;
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
         );
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         initViews();
         loginUser();
     }
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, ActivityRegister.class));
+                startActivity(new Intent(ActivityLogin.this, ActivityRegister.class));
                 finish();
             }
         });
@@ -59,17 +59,17 @@ public class MainActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             progressBar.setVisibility(View.INVISIBLE);
                             if (task.isSuccessful()) {
-                                Toast.makeText(MainActivity.this, "Sign in success", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(MainActivity.this, ActivityMainScreen.class));
+                                Toast.makeText(ActivityLogin.this, "Sign in success", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(ActivityLogin.this, ActivityMainScreen.class));
                                 finish();
                             } else {
-                                Toast.makeText(MainActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ActivityLogin.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
                 } else {
                     progressBar.setVisibility(View.INVISIBLE);
-                    Toast.makeText(MainActivity.this, "Fill properly", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActivityLogin.this, "Fill properly", Toast.LENGTH_SHORT).show();
                 }
             }
         });

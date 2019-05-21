@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">Shenda Learning App</string>
     <string name="c">C++</string>
+    <string name="registration_number">registration number</string>
+    <string name="email_id">email id</string>
+    <string name="password">password</string>
+    <string name="create_account">Create Account</string>
+    <string name="register_now">Register Now</string>
+    <string name="hello">Hello</string>
+    <string name="sign_into_your_account">Sign into your Account</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
 </resources>
