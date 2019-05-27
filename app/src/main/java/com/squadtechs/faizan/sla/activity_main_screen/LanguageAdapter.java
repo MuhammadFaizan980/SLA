@@ -1,6 +1,7 @@
 package com.squadtechs.faizan.sla.activity_main_screen;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.squadtechs.faizan.sla.R;
+import com.squadtechs.faizan.sla.activity_topics.ActivityTopics;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -30,13 +32,21 @@ public class LanguageAdapter extends RecyclerView.Adapter<LanguageAdapter.Holder
 
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int position) {
-        LanguageModel obj = list.get(position);
-        holder.txtTitle.setText(obj.Language);
+        final LanguageModel obj = list.get(position);
+        holder.txtTitle.setText(obj.language);
         Random random = new Random();
         int r = random.nextInt(255);
         int g = random.nextInt(255);
         int b = random.nextInt(255);
         holder.colorView.setBackgroundColor(Color.rgb(r, g, b));
+        holder.touchView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ActivityTopics.class);
+                intent.putExtra("language_key", obj.language);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
