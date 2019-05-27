@@ -88,5 +88,8 @@ public class ActivityLogin extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         progressBar.setVisibility(View.INVISIBLE);
+        if (FirebaseAuth.getInstance().getCurrentUser() != null)
+            startActivity(new Intent(ActivityLogin.this, ActivityMainScreen.class));
+        finish();
     }
 }

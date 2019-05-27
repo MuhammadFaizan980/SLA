@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 import com.google.firebase.database.DataSnapshot;
@@ -48,6 +49,13 @@ public class ActivityTopics extends AppCompatActivity {
 
     private void populateToolbar() {
         toolbar.setTitle("Topics");
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     private void prepareRecyclerView() {
