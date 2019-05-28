@@ -4,8 +4,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.Volley;
 import com.github.barteksc.pdfviewer.PDFView;
 import com.squadtechs.faizan.sla.R;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 
 public class ActivityContentPage extends AppCompatActivity {
 
