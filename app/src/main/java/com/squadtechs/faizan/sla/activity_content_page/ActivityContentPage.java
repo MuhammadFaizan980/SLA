@@ -60,6 +60,7 @@ public class ActivityContentPage extends AppCompatActivity {
                 pdfView.fromStream(stream)
                         .enableSwipe(true)
                         .defaultPage(0)
+                        .spacing(3)
                         .load();
             }
         }, new Response.ErrorListener() {
