@@ -9,14 +9,46 @@
 
     <include layout="@layout/toolbar" />
 
-    <VideoView
-        android:id="@+id/video_view"
-        android:layout_width="match_parent"
-        android:layout_height="250dp" />
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="200dp">
+
+        <View
+            android:id="@+id/v_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#8F8D8D" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_play_video"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="64dp"
+                android:src="@drawable/ic_play" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/my_fonts_bold"
+                android:text="@string/watch_video"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="21sp" />
+
+        </LinearLayout>
+
+    </FrameLayout>
 
     <com.github.barteksc.pdfviewer.PDFView
         android:id="@+id/pdfView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

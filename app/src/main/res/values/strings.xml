@@ -10,4 +10,5 @@
     <string name="password">password</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
+    <string name="watch_video">Watch Video</string>
 </resources>
