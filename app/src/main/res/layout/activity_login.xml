@@ -69,6 +69,7 @@
                         android:layout_marginTop="20dp"
                         android:fontFamily="@font/my_fonts"
                         android:hint="@string/email"
+                        android:textSize="21sp"
                         android:inputType="textEmailAddress" />
 
                     <EditText
@@ -76,6 +77,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginTop="10dp"
+                        android:textSize="21sp"
                         android:fontFamily="@font/my_fonts"
                         android:hint="@string/password"
                         android:inputType="textPassword" />
@@ -90,6 +92,7 @@
                         android:layout_marginRight="30dp"
                         android:background="#F3B245"
                         android:elevation="20dp"
+                        android:textStyle="bold"
                         android:fontFamily="@font/my_fonts"
                         android:text="@string/login"
                         android:textColor="#ffffff"
@@ -111,6 +114,7 @@
             android:background="#F8F8F8"
             android:fontFamily="@font/my_fonts"
             android:text="@string/register"
+            android:textStyle="bold"
             android:textColor="#F89F05"
             android:textSize="17sp" />
 
