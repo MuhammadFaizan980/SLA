@@ -61,6 +61,7 @@ public class ActivityContentPage extends AppCompatActivity {
                         .enableSwipe(true)
                         .defaultPage(0)
                         .spacing(3)
+                        .enableAntialiasing(true)
                         .load();
             }
         }, new Response.ErrorListener() {
