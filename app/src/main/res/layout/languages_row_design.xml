@@ -21,13 +21,12 @@
             android:id="@+id/txt_language_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fontFamily="@font/my_fonts"
+            android:fontFamily="@font/my_fonts_bold"
             android:gravity="center_vertical"
             android:paddingStart="16dp"
             android:text="@string/c"
             android:textColor="#000000"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textSize="21sp" />
 
     </LinearLayout>
 
