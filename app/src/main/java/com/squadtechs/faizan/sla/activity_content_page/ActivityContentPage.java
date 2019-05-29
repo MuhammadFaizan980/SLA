@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -20,6 +21,7 @@ public class ActivityContentPage extends AppCompatActivity {
 
     private PDFView pdfView;
     private Toolbar toolbar;
+    private ImageView imgPlay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class ActivityContentPage extends AppCompatActivity {
     private void initViews() {
         pdfView = findViewById(R.id.pdfView);
         toolbar = findViewById(R.id.main_toolbar);
+        imgPlay = findViewById(R.id.img_play_video);
     }
 
     private void populateToolbar() {
