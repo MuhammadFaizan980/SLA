@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity_question_comments.ActivityQuestionComments"></activity>
+        <activity android:name=".activity_questions.ActivityQuestions" />
         <activity
             android:name=".activity_play_video.ActivityPlayVideo"
             android:screenOrientation="landscape" />
