@@ -11,4 +11,7 @@
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="watch_video">Watch Video</string>
+    <string name="type_question_below">Type Question Below</string>
+    <string name="question">question here...</string>
+    <string name="add_question">Add Question</string>
 </resources>
