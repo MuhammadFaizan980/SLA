@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -88,8 +89,9 @@ public class ActivityLogin extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         progressBar.setVisibility(View.INVISIBLE);
-        if (FirebaseAuth.getInstance().getCurrentUser() != null)
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             startActivity(new Intent(ActivityLogin.this, ActivityMainScreen.class));
-        finish();
+            finish();
+        }
     }
 }
