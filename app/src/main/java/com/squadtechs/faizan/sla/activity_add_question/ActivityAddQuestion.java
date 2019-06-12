@@ -22,7 +22,7 @@ import java.util.HashMap;
 
 public class ActivityAddQuestion extends AppCompatActivity {
     private Toolbar toolbar;
-    private EditText edtQuestion;
+    private EditText edtQuestionTitle, edtQuestionDescription;
     private Button btnAdd;
     private ProgressBar progressBar;
     private FirebaseAuth firebaseAuth;
@@ -43,7 +43,8 @@ public class ActivityAddQuestion extends AppCompatActivity {
 
     private void initViews() {
         toolbar = findViewById(R.id.main_toolbar);
-        edtQuestion = findViewById(R.id.edt_question);
+        edtQuestionTitle = findViewById(R.id.edt_question_title);
+        edtQuestionDescription = findViewById(R.id.edt_question_body);
         btnAdd = findViewById(R.id.btn_add_question);
         progressBar = findViewById(R.id.progress_question);
         firebaseAuth = FirebaseAuth.getInstance();
@@ -65,9 +66,10 @@ public class ActivityAddQuestion extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!edtQuestion.getText().toString().trim().equals("")) {
+                if (!edtQuestionTitle.getText().toString().trim().equals("") && !edtQuestionDescription.getText().toString().trim().equals("")) {
                     HashMap<String, String> map = new HashMap<String, String>();
-                    map.put("question", edtQuestion.getText().toString().trim());
+                    map.put("question_title", edtQuestionTitle.getText().toString().trim());
+                    map.put("question_description", edtQuestionDescription.getText().toString().trim());
                     map.put("uid", firebaseAuth.getUid());
                     ref.push().setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
