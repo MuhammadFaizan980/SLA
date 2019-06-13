@@ -15,4 +15,6 @@
     <string name="question">question description here...</string>
     <string name="add_question">Add Question</string>
     <string name="title">Title...</string>
+    <string name="_1">1</string>
+    <string name="null_pointer_exception">Null Pointer Exception</string>
 </resources>
