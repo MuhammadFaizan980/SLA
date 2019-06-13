@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Shenda Learning App</string>
+    <string name="app_name">Student Learning App</string>
     <string name="c">C++</string>
     <string name="registration_number">registration number</string>
     <string name="create_account">Create Account</string>
