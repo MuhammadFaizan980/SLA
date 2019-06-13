@@ -56,7 +56,6 @@ public class ActivityMainScreen extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.item_questions: {
                         startActivity(new Intent(ActivityMainScreen.this, ActivityQuestions.class));
-                        finish();
                     }
                 }
                 return true;
