@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squadtechs.faizan.sla.R;
 
@@ -39,8 +40,15 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
         int g = random.nextInt(255);
         int b = random.nextInt(255);
         holder.colorView.setBackgroundColor(Color.rgb(r, g, b));
-        holder.txtCount.setText(String.valueOf(position));
+        holder.txtCount.setText(String.valueOf(position + 1));
         holder.txtTitle.setText(obj.question_title);
+
+        holder.touchView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "Touch detected", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

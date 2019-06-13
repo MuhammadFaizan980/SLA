@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -24,6 +25,7 @@ import java.util.List;
 
 public class ActivityQuestions extends AppCompatActivity {
 
+    private Toolbar toolbar;
     private FloatingActionButton fab;
     private RecyclerView recyclerView;
     private ArrayList<QuestionModel> list;
@@ -39,6 +41,7 @@ public class ActivityQuestions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
         initViews();
+        populateToolbar();
         setListeners();
         fetchData();
     }
@@ -77,7 +80,19 @@ public class ActivityQuestions extends AppCompatActivity {
         });
     }
 
+    private void populateToolbar() {
+        toolbar.setTitle("Problem Questions");
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
+
     private void initViews() {
+        toolbar = findViewById(R.id.main_toolbar);
         fab = findViewById(R.id.fab_add_question);
         recyclerView = findViewById(R.id.recycler_questions);
         list = new ArrayList<QuestionModel>();
