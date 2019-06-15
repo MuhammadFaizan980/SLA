@@ -19,6 +19,5 @@
     <string name="null_pointer_exception">Null Pointer Exception</string>
     <string name="cs12016218">CS12016218</string>
     <string name="_11_15_am">11:15 AM</string>
-    <string name="null_pointer_exception">Null Pointer Exception</string>
     <string name="i_am_having_null_pnter_exception_in_notification_class">I am having null pnter exception in notification class</string>
 </resources>

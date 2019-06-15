@@ -5,6 +5,6 @@
     <item
         android:id="@+id/item_questions"
         android:icon="@drawable/ic_problem"
-        android:title="Item"
+        android:title="Questions"
         app:showAsAction="always" />
 </menu>

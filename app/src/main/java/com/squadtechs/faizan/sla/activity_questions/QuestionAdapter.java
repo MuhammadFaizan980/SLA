@@ -52,6 +52,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
                 intent.putExtra("title", obj.question_title);
                 intent.putExtra("body", obj.question_description);
                 intent.putExtra("uid", obj.uid);
+                intent.putExtra("time", obj.time);
                 intent.putExtra("node_key", obj.node_key);
                 context.startActivity(intent);
             }
