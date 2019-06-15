@@ -13,11 +13,15 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 import com.squadtechs.faizan.sla.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 
 public class ActivityAddQuestion extends AppCompatActivity {
@@ -71,6 +75,8 @@ public class ActivityAddQuestion extends AppCompatActivity {
                     map.put("question_title", edtQuestionTitle.getText().toString().trim());
                     map.put("question_description", edtQuestionDescription.getText().toString().trim());
                     map.put("uid", firebaseAuth.getUid());
+                    SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:a");
+                    map.put("time", sdf.format(new Date()));
                     ref.push().setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {

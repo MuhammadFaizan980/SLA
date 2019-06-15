@@ -32,6 +32,7 @@
             android:id="@+id/txt_question_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:fontFamily="@font/my_fonts"
             android:gravity="center_vertical"
             android:text="@string/null_pointer_exception"
             android:textColor="#000000"

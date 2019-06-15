@@ -21,7 +21,7 @@
             android:id="@+id/txt_language_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fontFamily="@font/my_fonts_bold"
+            android:fontFamily="@font/my_fonts"
             android:gravity="center_vertical"
             android:paddingStart="16dp"
             android:text="@string/c"

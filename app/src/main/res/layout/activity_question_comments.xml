@@ -9,11 +9,81 @@
 
     <include layout="@layout/toolbar" />
 
-    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:minHeight="120dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_user" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingLeft="8dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:id="@+id/txt_registration_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/my_fonts_bold"
+                    android:text="@string/cs12016218"
+                    android:textColor="#ffffff" />
+
+                <TextView
+                    android:id="@+id/txt_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/my_fonts"
+                    android:text="@string/_11_15_am"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:fontFamily="@font/my_fonts_bold"
+            android:text="@string/null_pointer_exception"
+            android:textColor="#ffffff"
+            android:textSize="21sp" />
+
+        <TextView
+            android:id="@+id/txt_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/my_fonts"
+            android:text="@string/i_am_having_null_pnter_exception_in_notification_class"
+            android:textColor="#ffffff"
+            android:textSize="15sp" />
+
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_question_details"
+        android:id="@+id/recycler_comments"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_margin="8dp" />
 
 </LinearLayout>
