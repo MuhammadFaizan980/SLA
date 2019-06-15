@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity_add_comment.ActivityAddComment"></activity>
         <activity android:name=".activity_add_question.ActivityAddQuestion" />
         <activity android:name=".activity_question_comments.ActivityQuestionComments" />
         <activity android:name=".activity_questions.ActivityQuestions" />

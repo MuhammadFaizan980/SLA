@@ -20,4 +20,7 @@
     <string name="cs12016218">CS12016218</string>
     <string name="_11_15_am">11:15 AM</string>
     <string name="i_am_having_null_pnter_exception_in_notification_class">I am having null pnter exception in notification class</string>
+    <string name="add_comment_below">Add Comment Below</string>
+    <string name="add_comment_here">Add Comment here...</string>
+    <string name="add_comment">Add Comment</string>
 </resources>

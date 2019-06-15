@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squadtechs.faizan.sla.R;
+import com.squadtechs.faizan.sla.activity_add_comment.ActivityAddComment;
 
 import java.util.HashMap;
 
@@ -27,6 +29,7 @@ public class ActivityQuestionComments extends AppCompatActivity {
     private RecyclerView recyclerView;
     private DatabaseReference ref;
     private Intent intent;
+    private String node_ref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,10 +65,27 @@ public class ActivityQuestionComments extends AppCompatActivity {
     private void populateToolbar() {
         toolbar.setTitle("Question Details");
         toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.inflateMenu(R.menu.menu_add);
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.item_add: {
+                        Intent intent = new Intent(ActivityQuestionComments.this, ActivityAddComment.class);
+                        intent.putExtra("node_ref", node_ref);
+                        startActivity(intent);
+                        break;
+                    }
+                }
+                return true;
             }
         });
     }
@@ -78,6 +98,8 @@ public class ActivityQuestionComments extends AppCompatActivity {
         txtTime = findViewById(R.id.txt_time);
         txtRegistrationNumber = findViewById(R.id.txt_registration_number);
         recyclerView = findViewById(R.id.recycler_comments);
+        node_ref = intent.getExtras().get("node_key").toString();
+        Log.i("dxdiag", node_ref);
         ref = FirebaseDatabase.getInstance().getReference("questions").child(intent.getStringExtra("node_key"));
     }
 
