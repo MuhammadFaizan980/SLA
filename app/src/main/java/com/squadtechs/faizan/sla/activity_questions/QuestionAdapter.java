@@ -1,6 +1,7 @@
 package com.squadtechs.faizan.sla.activity_questions;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squadtechs.faizan.sla.R;
+import com.squadtechs.faizan.sla.activity_question_comments.ActivityQuestionComments;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +36,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
 
     @Override
     public void onBindViewHolder(@NonNull QuestionViewHolder holder, int position) {
-        QuestionModel obj = list.get(position);
+        final QuestionModel obj = list.get(position);
         Random random = new Random();
         int r = random.nextInt(255);
         int g = random.nextInt(255);
@@ -46,7 +48,12 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
         holder.touchView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Touch detected", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, ActivityQuestionComments.class);
+                intent.putExtra("title", obj.question_title);
+                intent.putExtra("body", obj.question_description);
+                intent.putExtra("uid", obj.uid);
+                intent.putExtra("node_key", obj.node_key);
+                context.startActivity(intent);
             }
         });
     }

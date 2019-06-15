@@ -56,6 +56,7 @@ public class ActivityQuestions extends AppCompatActivity {
                     list.clear();
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
                         QuestionModel obj = ds.getValue(QuestionModel.class);
+                        obj.node_key = ds.getKey();
                         list.add(obj);
                         adapter.notifyDataSetChanged();
                     }
