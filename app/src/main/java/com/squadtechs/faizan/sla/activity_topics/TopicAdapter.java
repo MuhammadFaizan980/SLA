@@ -9,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import com.squadtechs.faizan.sla.R;
+import com.squadtechs.faizan.sla.activity_content_page.ActivityContentPage;
 import com.squadtechs.faizan.sla.activity_main_screen.LanguageAdapter;
 import com.squadtechs.faizan.sla.activity_main_screen.LanguageModel;
 
@@ -47,10 +49,12 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.TopicHolder>
         holder.touchView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, ActivityTopics.class);
+                Intent intent = new Intent(context, ActivityContentPage.class);
                 intent.putExtra("language_key", language_key);
                 intent.putExtra("topic_key", obj.Topic);
-                //TODO: start activity for video and PDF
+                intent.putExtra("video_url", obj.Video);
+                intent.putExtra("pdf_url", obj.PDF);
+                context.startActivity(intent);
             }
         });
     }

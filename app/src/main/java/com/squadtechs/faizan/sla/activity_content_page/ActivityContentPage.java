@@ -1,11 +1,13 @@
 package com.squadtechs.faizan.sla.activity_content_page;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -13,6 +15,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.github.barteksc.pdfviewer.PDFView;
 import com.squadtechs.faizan.sla.R;
+import com.squadtechs.faizan.sla.activity_play_video.ActivityPlayVideo;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -22,6 +25,7 @@ public class ActivityContentPage extends AppCompatActivity {
     private PDFView pdfView;
     private Toolbar toolbar;
     private ImageView imgPlay;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +38,14 @@ public class ActivityContentPage extends AppCompatActivity {
         initViews();
         populateToolbar();
         loadData();
+        setListener();
     }
 
     private void initViews() {
         pdfView = findViewById(R.id.pdfView);
         toolbar = findViewById(R.id.main_toolbar);
         imgPlay = findViewById(R.id.img_play_video);
+        intent = getIntent();
     }
 
     private void populateToolbar() {
@@ -54,7 +60,7 @@ public class ActivityContentPage extends AppCompatActivity {
     }
 
     private void loadData() {
-        String mURL = "https://firebasestorage.googleapis.com/v0/b/student-learning-app.appspot.com/o/HIVinfobooklet.pdf?alt=media&token=536cf84b-1d2d-4f6e-b83f-c494fd836ae2";
+        String mURL = (String) intent.getExtras().get("pdf_url");
         RequestQueue requestQueue = Volley.newRequestQueue(ActivityContentPage.this);
         InputStreamVolleyRequest request = new InputStreamVolleyRequest(Request.Method.GET, mURL, new Response.Listener<byte[]>() {
             @Override
@@ -74,6 +80,17 @@ public class ActivityContentPage extends AppCompatActivity {
             }
         }, null);
         requestQueue.add(request);
+    }
+
+    private void setListener() {
+        imgPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mIntent = new Intent(ActivityContentPage.this, ActivityPlayVideo.class);
+                mIntent.putExtra("video_url", (String) intent.getExtras().get("video_url"));
+                startActivity(mIntent);
+            }
+        });
     }
 
 }
