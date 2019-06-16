@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -61,6 +62,7 @@ public class ActivityContentPage extends AppCompatActivity {
 
     private void loadData() {
         String mURL = (String) intent.getExtras().get("pdf_url");
+        Log.i("dxdiag", "url: " + mURL);
         RequestQueue requestQueue = Volley.newRequestQueue(ActivityContentPage.this);
         InputStreamVolleyRequest request = new InputStreamVolleyRequest(Request.Method.GET, mURL, new Response.Listener<byte[]>() {
             @Override
@@ -76,7 +78,7 @@ public class ActivityContentPage extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Log.i("dxdiag", error.toString());
             }
         }, null);
         requestQueue.add(request);
