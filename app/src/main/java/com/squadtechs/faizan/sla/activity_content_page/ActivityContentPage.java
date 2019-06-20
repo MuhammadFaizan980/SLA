@@ -20,6 +20,9 @@ import com.squadtechs.faizan.sla.activity_play_video.ActivityPlayVideo;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 
 public class ActivityContentPage extends AppCompatActivity {
 
@@ -27,6 +30,7 @@ public class ActivityContentPage extends AppCompatActivity {
     private Toolbar toolbar;
     private ImageView imgPlay;
     private Intent intent;
+    private String time = "0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,4 +99,25 @@ public class ActivityContentPage extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        SimpleDateFormat sdf = new SimpleDateFormat("mm");
+        time = sdf.format(new Date());
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SimpleDateFormat sdf = new SimpleDateFormat("mm");
+        int minutes = Integer.parseInt(sdf.format(new Date()));
+        int oldMinutes = Integer.parseInt(time);
+        int totalMinutes = minutes - oldMinutes;
+        if (totalMinutes < 0) {
+            totalMinutes = totalMinutes * (-1);
+        }
+        time = String.valueOf(totalMinutes);
+        HashMap<String, String> map = new HashMap<>();
+        // TODO: 6/20/2019 Add data to Firebase Database
+    }
 }
