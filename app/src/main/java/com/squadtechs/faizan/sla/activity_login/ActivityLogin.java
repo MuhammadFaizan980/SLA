@@ -66,14 +66,12 @@ public class ActivityLogin extends AppCompatActivity {
                     firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            progressBar.setVisibility(View.INVISIBLE);
                             if (task.isSuccessful()) {
-                                Toast.makeText(ActivityLogin.this, "Sign in success", Toast.LENGTH_SHORT).show();
-
                                 FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getUid())
                                         .addValueEventListener(new ValueEventListener() {
                                             @Override
                                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                progressBar.setVisibility(View.INVISIBLE);
                                                 if (dataSnapshot.exists()) {
                                                     HashMap<String, String> map = (HashMap<String, String>) dataSnapshot.getValue();
                                                     SharedPreferences pref = getSharedPreferences("user_info", Context.MODE_PRIVATE);
