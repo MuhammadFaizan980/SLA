@@ -1,6 +1,8 @@
 package com.squadtechs.faizan.sla.activity_login;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,9 +17,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squadtechs.faizan.sla.R;
 import com.squadtechs.faizan.sla.activity_main_screen.ActivityMainScreen;
 import com.squadtechs.faizan.sla.activity_register.ActivityRegister;
+
+import java.util.HashMap;
 
 public class ActivityLogin extends AppCompatActivity {
 
@@ -61,8 +69,28 @@ public class ActivityLogin extends AppCompatActivity {
                             progressBar.setVisibility(View.INVISIBLE);
                             if (task.isSuccessful()) {
                                 Toast.makeText(ActivityLogin.this, "Sign in success", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(ActivityLogin.this, ActivityMainScreen.class));
-                                finish();
+
+                                FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getUid())
+                                        .addValueEventListener(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                if (dataSnapshot.exists()) {
+                                                    HashMap<String, String> map = (HashMap<String, String>) dataSnapshot.getValue();
+                                                    SharedPreferences pref = getSharedPreferences("user_info", Context.MODE_PRIVATE);
+                                                    SharedPreferences.Editor editor = pref.edit();
+                                                    editor.putString("reg_number", map.get("registration_number"));
+                                                    editor.putString("user_email", map.get("email"));
+                                                    editor.apply();
+                                                    startActivity(new Intent(ActivityLogin.this, ActivityMainScreen.class));
+                                                    finish();
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                            }
+                                        });
                             } else {
                                 Toast.makeText(ActivityLogin.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
