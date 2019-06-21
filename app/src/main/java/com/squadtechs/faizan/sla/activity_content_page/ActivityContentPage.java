@@ -33,7 +33,8 @@ public class ActivityContentPage extends AppCompatActivity {
     private Toolbar toolbar;
     private ImageView imgPlay;
     private Intent intent;
-    private String time = "0";
+    private long oldTime = 0;
+    private long newTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,27 +106,20 @@ public class ActivityContentPage extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        SimpleDateFormat sdf = new SimpleDateFormat("mm");
-        time = sdf.format(new Date());
+        oldTime = System.currentTimeMillis();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        SimpleDateFormat sdf = new SimpleDateFormat("mm");
-        int minutes = Integer.parseInt(sdf.format(new Date()));
-        int oldMinutes = Integer.parseInt(time);
-        int totalMinutes = minutes - oldMinutes;
-        if (totalMinutes < 0) {
-            totalMinutes = totalMinutes * (-1);
-        }
-        time = String.valueOf(totalMinutes);
+        newTime = System.currentTimeMillis();
+        double totalMinutes = ((newTime - oldTime) / 1000);
         HashMap<String, String> map = new HashMap<>();
         SharedPreferences preferences = getSharedPreferences("user_info", Context.MODE_PRIVATE);
         map.put("reg_number", preferences.getString("reg_number", "N/A"));
         map.put("email", preferences.getString("email", "N/A"));
         map.put("content", "PDF");
-        map.put("time", time);
+        map.put("time", String.valueOf(totalMinutes / 60) + " minutes");
         FirebaseDatabase.getInstance().getReference("user_data").push().setValue(map);
     }
 }
