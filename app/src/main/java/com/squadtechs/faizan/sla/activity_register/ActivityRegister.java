@@ -1,6 +1,8 @@
 package com.squadtechs.faizan.sla.activity_register;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -65,6 +67,11 @@ public class ActivityRegister extends AppCompatActivity {
                                         progressBar.setVisibility(View.INVISIBLE);
                                         if (mTask.isSuccessful()) {
                                             Toast.makeText(ActivityRegister.this, "Registration Success", Toast.LENGTH_SHORT).show();
+                                            SharedPreferences pref = getSharedPreferences("user_info", Context.MODE_PRIVATE);
+                                            SharedPreferences.Editor editor = pref.edit();
+                                            editor.putString("reg_number", regNumber);
+                                            editor.putString("user_email", email);
+                                            editor.apply();
                                             startActivity(new Intent(ActivityRegister.this, ActivityMainScreen.class));
                                             finish();
                                         } else {
