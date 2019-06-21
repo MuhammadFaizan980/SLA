@@ -1,6 +1,8 @@
 package com.squadtechs.faizan.sla.activity_content_page;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -15,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.github.barteksc.pdfviewer.PDFView;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squadtechs.faizan.sla.R;
 import com.squadtechs.faizan.sla.activity_play_video.ActivityPlayVideo;
 
@@ -118,6 +121,11 @@ public class ActivityContentPage extends AppCompatActivity {
         }
         time = String.valueOf(totalMinutes);
         HashMap<String, String> map = new HashMap<>();
-        // TODO: 6/20/2019 Add data to Firebase Database
+        SharedPreferences preferences = getSharedPreferences("user_info", Context.MODE_PRIVATE);
+        map.put("reg_number", preferences.getString("reg_number", "N/A"));
+        map.put("email", preferences.getString("email", "N/A"));
+        map.put("content", "PDF");
+        map.put("time", time);
+        FirebaseDatabase.getInstance().getReference("user_data").push().setValue(map);
     }
 }
