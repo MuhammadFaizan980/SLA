@@ -90,6 +90,8 @@ public class ActivityLogin extends AppCompatActivity {
                                             }
                                         });
                             } else {
+                                //Progressbar bug was resolved
+                                progressBar.setVisibility(View.INVISIBLE);
                                 Toast.makeText(ActivityLogin.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         }
