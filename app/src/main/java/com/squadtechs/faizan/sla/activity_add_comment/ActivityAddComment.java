@@ -100,4 +100,5 @@ public class ActivityAddComment extends AppCompatActivity {
         super.onStart();
         progressBar.setVisibility(View.INVISIBLE);
     }
+    //dummy comment
 }
