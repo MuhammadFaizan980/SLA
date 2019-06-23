@@ -49,6 +49,7 @@ public class ActivityAddComment extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!edtComment.getText().toString().trim().equals("")) {
+                    btnAddComment.setEnabled(false);
                     progressBar.setVisibility(View.VISIBLE);
                     HashMap<String, String> map = new HashMap<>();
                     map.put("comment_text", edtComment.getText().toString().trim());
@@ -62,6 +63,7 @@ public class ActivityAddComment extends AppCompatActivity {
                                 Toast.makeText(ActivityAddComment.this, "Comment Added", Toast.LENGTH_SHORT).show();
                                 finish();
                             } else {
+                                btnAddComment.setEnabled(true);
                                 progressBar.setVisibility(View.INVISIBLE);
                                 Toast.makeText(ActivityAddComment.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                             }
