@@ -117,7 +117,7 @@ public class ActivityContentPage extends AppCompatActivity {
         HashMap<String, String> map = new HashMap<>();
         SharedPreferences preferences = getSharedPreferences("user_info", Context.MODE_PRIVATE);
         map.put("reg_number", preferences.getString("reg_number", "N/A"));
-        map.put("email", preferences.getString("email", "N/A"));
+        map.put("email", preferences.getString("user_email", "N/A"));
         map.put("content", "PDF");
         map.put("time", String.valueOf(totalMinutes / 60) + " minutes");
         FirebaseDatabase.getInstance().getReference("user_data").push().setValue(map);
